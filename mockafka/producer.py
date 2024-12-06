@@ -1,4 +1,5 @@
 from __future__ import annotations
+import logging
 
 from mockafka.cluster_metadata import ClusterMetadata
 from mockafka.kafka_store import KafkaStore
@@ -8,7 +9,7 @@ __all__ = ["FakeProducer"]
 
 
 class FakeProducer(object):
-    def __init__(self, config: dict | None = None):
+    def __init__(self, config: dict | None = None, *args, **kwargs):
         self.kafka = KafkaStore()
 
     def produce(self, topic, value=None, *args, **kwargs):
