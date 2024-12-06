@@ -15,7 +15,7 @@ class FakeProducer(object):
     def produce(self, topic, value=None, *args, **kwargs):
         # create a message and call produce kafka
         message = Message(value=value, topic=topic, *args, **kwargs)
-        self.kafka.produce(message=message, topic=topic, partition=kwargs["partition"])
+        self.kafka.produce(message=message, topic=topic, partition=kwargs.get("partition", 0))
 
     def list_topics(self, topic=None, *args, **kwargs):
         return ClusterMetadata(topic)
